@@ -5,7 +5,7 @@ class Student
 public:
     Student();
 
-    void addGrades(short grade);
+    void addGrades(const short grade); //получить оценку
     std::vector<short> getGrades();
     
 private:

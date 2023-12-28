@@ -2,7 +2,7 @@
 
 Student::Student(){}
 
-void Student::addGrades(short grade)
+void Student::addGrades(const short grade) //получить оценку
 {
     if(grade>0 && grade <6){
         grades.push_back(grade);
