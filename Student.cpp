@@ -16,6 +16,7 @@ std::vector<short> Student::getGrades()
 
 bool Student::getExellentGrades()
 {
+    updateExellentGrades();
     return exellentGrades;
 }
 
