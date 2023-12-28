@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+
 class Student
 {
 public:
@@ -7,7 +8,13 @@ public:
 
     void addGrades(const short grade); //получить оценку
     std::vector<short> getGrades();
+
+    bool getExellentGrades();
     
 private:
+    void updateExellentGrades(); //обновляем информацию отличник студент или нет
+
+private:
     std::vector<short>grades;
+    bool exellentGrades = true;
 };
