@@ -4,6 +4,8 @@ Teacher::Teacher()
 {
     srand(time(0));
     mood = static_cast<Mood>(rand() % 3);
+
+    setMaxGrades(5);
 }
 
 void Teacher::giveGrade(std::shared_ptr<Student>& student) //поставить оценку студенту
@@ -43,6 +45,11 @@ void Teacher::giveGrade(std::shared_ptr<Student>& student) //поставить 
     }
 
     student->addGrades(grade);
+    appendCountGrade();
+    if(countGrade == maxGrades){
+        countGrade = 0;
+        setMood((Mood)(rand()%3));
+    }
 }
 
 void Teacher::setMood(const Mood _mood)
@@ -53,4 +60,14 @@ void Teacher::setMood(const Mood _mood)
 Mood Teacher::getMood()
 {
     return mood;
+}
+
+void Teacher::setMaxGrades(unsigned num)
+{
+    maxGrades = num;
+}
+
+void Teacher::appendCountGrade()
+{
+    countGrade++;
 }

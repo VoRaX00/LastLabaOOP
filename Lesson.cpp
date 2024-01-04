@@ -25,7 +25,7 @@ void Lesson::setGradesStudents()
     srand(time(0));
     short countStudent = rand() % students.size() + 1;
     for(int i=0; i < countStudent; i++){
-        short numStudent = rand() % students.size() + 1;
+        short numStudent = rand() % students.size();
         teacher->giveGrade(students[numStudent]);
     }
 }

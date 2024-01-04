@@ -15,8 +15,16 @@ public:
     virtual void giveGrade(std::shared_ptr<Student>& student); //поставить оценку студенту
 
     void setMood(const Mood _mood);
+
     Mood getMood();
 
-private:
+    void setMaxGrades(unsigned num);
+
+protected:
+    void appendCountGrade();
+
+protected:
     Mood mood;
+    unsigned countGrade;
+    unsigned maxGrades;
 };
