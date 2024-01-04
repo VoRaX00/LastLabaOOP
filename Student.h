@@ -9,7 +9,7 @@ public:
     void addGrades(const short grade); //получить оценку
     std::vector<short> getGrades();
 
-    bool getExellentGrades();
+    bool getExellentGrades(); //узнаём отличник ли студент
     
 private:
     void updateExellentGrades(); //обновляем информацию отличник студент или нет
