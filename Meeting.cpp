@@ -14,12 +14,17 @@ void Meeting::discuss()
         {
             for (auto j : lessons[i]->getStudents())
             {
-                std::shared_ptr<Parent> parent = findParent(j);
+                if(j->getGrades()[i] != Grades::Empty){
+                    std::shared_ptr<Parent> parent = findParent(j);
 
-                if (parent != nullptr)
-                    parent->tellAboutChild(j);
-                else
-                    notMeeting.push_back(j);
+                    if (parent != nullptr)
+                        parent->tellAboutChild(j);
+                    else
+                        notMeeting.push_back(j);
+                }
+                else{
+                    std::cout << "Не получил оценку за урок\n";
+                }
             }
         }
         else
@@ -31,7 +36,7 @@ void Meeting::discuss()
     std::cout << "Список отсутствующих:\n";
     for (auto i : notMeeting)
     {
-        std::cout << i << std::endl;
+        std::cout << *i << std::endl;
     }
 }
 

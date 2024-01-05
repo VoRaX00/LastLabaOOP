@@ -4,7 +4,7 @@
 #include <time.h>
 Parent::Parent()
 {
-    // srand(time(0));
+    srand(time(0));
     mood = (Mood)(rand() % 3);
 }
 
@@ -31,14 +31,13 @@ void Parent::tellAboutChild()
         return;
     }
 
-    // srand(time(0));
     short numChild = rand() % children.size();
     tellAboutChild(children[numChild]);
 }
 
 void Parent::tellAboutChild(std::shared_ptr<Student> child)
 {
-    if (itMyChild(child))
+    if (!itMyChild(child))
     {
         std::cout << "Error: это чужой ребёнок\n";
         return;
