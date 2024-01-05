@@ -9,17 +9,17 @@ public:
 
     void tellAboutEveryChildren();                       // рассказать о каждом своём ребёнке
     void tellAboutChild();                               // рассказать об одном случайном ребёнке
-    void tellAboutChild(std::shared_ptr<Student> child); // рассказать о конкретном ребёнке
-    void tellAboutAllChildren();                         // рассказать в общем обо всех детях
+    virtual void tellAboutChild(std::shared_ptr<Student> child); // рассказать о конкретном ребёнке
+    virtual void tellAboutAllChildren();                         // рассказать в общем обо всех детях
 
     void addChild(std::shared_ptr<Student> child);
 
     bool itMyChild(std::shared_ptr<Student> child);
 
-private:
+protected:
     short getCountExcellentStudents();
 
-private:
+protected:
     Mood mood;
     std::vector<std::shared_ptr<Student>> children;
 };

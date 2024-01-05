@@ -2,6 +2,7 @@
 #include "SuperTeacher.h"
 #include "Meeting.h"
 #include <iostream>
+#include "Grandmother.h"
 using namespace std;
 
 std::ostream &operator<<(std::ostream &out, Grades grade)
@@ -45,14 +46,14 @@ int main()
     vector<shared_ptr<Parent>> parents = {
         make_shared<Parent>(),
         make_shared<Parent>(),
-        make_shared<Parent>()
+        make_shared<Grandmother>()
     };
 
     parents[0]->addChild(students[0]);
     parents[0]->addChild(students[1]);
     parents[1]->addChild(students[2]);
     parents[1]->addChild(students[3]);
-    parents[2]->addChild(students[4]);
+    //parents[2]->addChild(students[4]);
     parents[2]->addChild(students[5]);
 
 

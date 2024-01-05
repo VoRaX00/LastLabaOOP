@@ -1,5 +1,6 @@
 #include "Meeting.h"
 #include <iostream>
+#include <algorithm>
 Meeting::Meeting() {}
 
 Meeting::Meeting(std::vector<std::shared_ptr<Lesson>> &_lessons, std::vector<std::shared_ptr<Teacher>> &_teachers, std::vector<std::shared_ptr<Parent>> &_parents) : lessons(_lessons), teachers(_teachers), parents(_parents) {}
@@ -19,8 +20,10 @@ void Meeting::discuss()
 
                     if (parent != nullptr)
                         parent->tellAboutChild(j);
-                    else
-                        notMeeting.push_back(j);
+                    else{
+                        if(std::find(notMeeting.begin(), notMeeting.end(), j) == notMeeting.end())
+                            notMeeting.push_back(j);
+                    }
                 }
                 else{
                     std::cout << "Не получил оценку за урок\n";
