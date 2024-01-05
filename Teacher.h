@@ -2,7 +2,8 @@
 #include "Student.h"
 #include <memory>
 
-enum class Mood{
+enum class Mood
+{
     Bad,
     Normal,
     Good
@@ -13,7 +14,7 @@ class Teacher
 public:
     Teacher();
 
-    virtual void giveGrade(std::shared_ptr<Student>& student); //поставить оценку студенту
+    virtual void giveGrade(std::shared_ptr<Student> &student); // поставить оценку студенту
 
     void setMood(const Mood _mood);
 

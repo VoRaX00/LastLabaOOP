@@ -1,20 +1,37 @@
 #pragma once
 #include <vector>
+#include <string>
+
+enum class Grades
+{
+    Five,
+    Four,
+    Three,
+    Two,
+    Empty
+};
 
 class Student
 {
 public:
     Student();
+    Student(std::string _surname, std::string _name, std::string _patronymic);
 
-    void addGrades(const short grade); //получить оценку
-    std::vector<short> getGrades();
+    void addGrades(const Grades grade); // получить оценку
+    std::vector<Grades> getGrades();
 
-    bool getExellentGrades(); //узнаём отличник ли студент
-    
+    bool getExcellentGrades(); // узнаём отличник ли студент
+
+    friend std::ostream &operator<<(std::ostream &out, Student student);
+
 private:
-    void updateExellentGrades(); //обновляем информацию отличник студент или нет
+    void updateExcellentGrades(); // обновляем информацию отличник студент или нет
 
 private:
-    std::vector<short>grades;
-    bool exellentGrades = true;
+    std::string surname;
+    std::string name;
+    std::string patronymic;
+
+    std::vector<Grades> grades;
+    bool excellentGrades = true;
 };

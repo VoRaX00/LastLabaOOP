@@ -1,32 +1,41 @@
 #include "Student.h"
+#include <iostream>
 
-Student::Student(){}
+Student::Student() {}
 
-void Student::addGrades(const short grade) //получить оценку
+Student::Student(std::string _surname, std::string _name, std::string _patronymic) : surname(_surname), name(_name), patronymic(_patronymic) {}
+
+void Student::addGrades(const Grades grade) // получить оценку
 {
-    if(grade>1 && grade <6){
-        grades.push_back(grade);
-    }
+    grades.push_back(grade);
 }
 
-std::vector<short> Student::getGrades()
+std::vector<Grades> Student::getGrades()
 {
     return grades;
 }
 
-bool Student::getExellentGrades()
+bool Student::getExcellentGrades()
 {
-    updateExellentGrades();
-    return exellentGrades;
+    updateExcellentGrades();
+    return excellentGrades;
 }
 
-void Student::updateExellentGrades()
+void Student::updateExcellentGrades()
 {
-    for(auto i : grades){
-        if(i != 5){
-            exellentGrades = false;
+    for (auto i : grades)
+    {
+        if (i != Grades::Five && i != Grades::Empty)
+        {
+            excellentGrades = false;
             return;
         }
     }
-    exellentGrades = true;
+    excellentGrades = true;
+}
+
+std::ostream &operator<<(std::ostream &out, Student student)
+{
+    out << student.surname << " " << student.name << " " << student.patronymic;
+    return out;
 }

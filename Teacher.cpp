@@ -1,54 +1,65 @@
 #include "Teacher.h"
-#include<iostream>
+#include <time.h>
 Teacher::Teacher()
 {
     srand(time(0));
-    mood = static_cast<Mood>(rand() % 3);
+    mood = (Mood)(rand() % 3);
 
     setMaxGrades(5);
 }
 
-void Teacher::giveGrade(std::shared_ptr<Student>& student) //поставить оценку студенту
+void Teacher::giveGrade(std::shared_ptr<Student> &student) // поставить оценку студенту
 {
-    srand(time(0));
-    short grade;
-    if(student->getExellentGrades() && mood == Mood::Good){
-        grade = 5;
+    Grades grade;
+    if (student->getExcellentGrades() && mood == Mood::Good)
+    {
+        grade = Grades::Five;
     }
-    else if(student->getExellentGrades() &&(mood == Mood::Normal || mood == Mood::Bad)){
-        short num = rand()%3 == 0;
-        grade = (num == 0) ? 3 : (num == 1 ? 4 : 5);
+    else if (student->getExcellentGrades() && (mood == Mood::Normal || mood == Mood::Bad))
+    {
+        short num = rand() % 3 == 0;
+        grade = (num == 0) ? Grades::Three : (num == 1 ? Grades::Four : Grades::Five);
     }
-    else if(!student->getExellentGrades() && mood == Mood::Good){
-        if(rand() % 2 == 0){
-            grade = 4;
+    else if (!student->getExcellentGrades() && mood == Mood::Good)
+    {
+        if (rand() % 2 == 0)
+        {
+            grade = Grades::Four;
         }
-        else{
-            grade = 5;
-        }
-    }
-    else if(!student->getExellentGrades() && mood == Mood::Normal){
-        if(rand() % 2 == 0){
-            grade = 3;
-        }
-        else{
-            grade = 4;
+        else
+        {
+            grade = Grades::Five;
         }
     }
-    else{
-        if(rand() % 2 == 0){
-            grade = 2;
+    else if (!student->getExcellentGrades() && mood == Mood::Normal)
+    {
+        if (rand() % 2 == 0)
+        {
+            grade = Grades::Three;
         }
-        else{
-            grade = 3;
+        else
+        {
+            grade = Grades::Four;
+        }
+    }
+    else
+    {
+        if (rand() % 2 == 0)
+        {
+            grade = Grades::Two;
+        }
+        else
+        {
+            grade = Grades::Three;
         }
     }
 
     student->addGrades(grade);
     appendCountGrade();
-    if(countGrade == maxGrades){
+    if (countGrade == maxGrades)
+    {
         countGrade = 0;
-        setMood((Mood)(rand()%3));
+        setMood((Mood)(rand() % 3));
     }
 }
 
